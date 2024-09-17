@@ -1,22 +1,33 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_isalnum.c                                       :+:      :+:    :+:   */
+/*   ft_strrchr.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: jpavia <jpavia@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2024/09/17 17:39:47 by jpavia            #+#    #+#             */
-/*   Updated: 2024/09/17 17:43:55 by jpavia           ###   ########.fr       */
+/*   Created: 2024/09/17 23:13:16 by jpavia            #+#    #+#             */
+/*   Updated: 2024/09/17 23:41:32 by jpavia           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-int ft_isalnum(int c)
+
+char    *strrchr(const char *s, int c)
 {
-	if((c <= 'z' && c >= 'a') || (c <= 'Z' && c >= 'A'))
-        return 1;
-    1
-    else if(c <= '9' && c >= '0')
-        return 1;
-    else
-        return 0;
+    char *ptr;
+
+    ptr = NULL;
+    
+    while(*s != '\0')
+    {
+        if (*s == (char)c)
+            ptr = (char *)s;
+        s++;
+    }
+
+    if ((char)c == '\0')
+    {
+        return (char *)s;
+    }
+    
+    return ptr;
 }

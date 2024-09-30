@@ -1,28 +1,35 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_memset.c                                        :+:      :+:    :+:   */
+/*   ft_putnbr_fd.c                                     :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: bosco <bosco@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2024/09/17 20:57:45 by jpavia            #+#    #+#             */
-/*   Updated: 2024/09/19 16:27:18 by bosco            ###   ########.fr       */
+/*   Created: 2024/09/30 11:47:03 by bosco             #+#    #+#             */
+/*   Updated: 2024/09/30 12:04:17 by bosco            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "libft.h"
+#include <unistd.h>
 
-void *ft_memset(void *s, int    c, size_t   n)
+void ft_putnbr_fd(int n, int fd)
 {
-    char *ptr;
-    
-    ptr = s;
 
-    while(n > 0)
+    char c;
+
+    if (n < 0)
     {
-        *ptr = (char)c;
-        ptr++;
-        n--;
+        write(fd, "-", 1);
+        if (n == -2147483648)
+        {
+            write(fd, "2147483648", 10);
+            return;
+        }
+        n = -n;
     }
-    return s;
+    if (n >= 10)
+        ft_putnbr_fd(n / 10, fd);
+
+    c = n % 10 + '0';
+    write(fd, &c, 1);  
 }

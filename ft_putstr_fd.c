@@ -1,28 +1,22 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_memset.c                                        :+:      :+:    :+:   */
+/*   ft_putstr_fd.c                                     :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: bosco <bosco@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2024/09/17 20:57:45 by jpavia            #+#    #+#             */
-/*   Updated: 2024/09/19 16:27:18 by bosco            ###   ########.fr       */
+/*   Created: 2024/09/30 11:18:40 by bosco             #+#    #+#             */
+/*   Updated: 2024/09/30 11:44:26 by bosco            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "libft.h"
+#include <unistd.h>
 
-void *ft_memset(void *s, int    c, size_t   n)
+void ft_putstr_fd(char *s, int fd)
 {
-    char *ptr;
-    
-    ptr = s;
+    int i;
 
-    while(n > 0)
-    {
-        *ptr = (char)c;
-        ptr++;
-        n--;
-    }
-    return s;
+    i = 0;
+    while(s[i] != '\0')
+        write(fd, &s[i++], 1);
 }

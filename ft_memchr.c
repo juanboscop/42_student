@@ -1,28 +1,34 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_memset.c                                        :+:      :+:    :+:   */
+/*   ft_memchr.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: bosco <bosco@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2024/09/17 20:57:45 by jpavia            #+#    #+#             */
-/*   Updated: 2024/09/19 16:27:18 by bosco            ###   ########.fr       */
+/*   Created: 2024/09/19 16:12:06 by bosco             #+#    #+#             */
+/*   Updated: 2024/09/19 16:27:14 by bosco            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "libft.h"
+#include <string.h>
 
-void *ft_memset(void *s, int    c, size_t   n)
+void *memchr(const void *s, int c, size_t n);
+
+void *memchr(const void *s, int c, size_t n)
 {
-    char *ptr;
-    
-    ptr = s;
+    unsigned char find_word;
+    int i;
+    const unsigned char *ptr;
 
-    while(n > 0)
+    ptr = (const unsigned char *)s;
+    find_word = (unsigned char)c;
+    i = 0;
+    while(i < n)
     {
-        *ptr = (char)c;
-        ptr++;
-        n--;
+        if(ptr[i] == find_word)
+            return (void *)(ptr + i);
+
+        i++;
     }
-    return s;
+    return NULL;
 }

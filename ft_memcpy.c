@@ -1,28 +1,31 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_memset.c                                        :+:      :+:    :+:   */
+/*   memcpy.c                                           :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: bosco <bosco@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2024/09/17 20:57:45 by jpavia            #+#    #+#             */
-/*   Updated: 2024/09/19 16:27:18 by bosco            ###   ########.fr       */
+/*   Created: 2024/09/19 14:22:26 by bosco             #+#    #+#             */
+/*   Updated: 2024/09/19 14:47:20 by bosco            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "libft.h"
+void *memcpy(void *dest, const void *src, size_t n);
 
-void *ft_memset(void *s, int    c, size_t   n)
-{
-    char *ptr;
+void *memcpy(void *dest, const void *src, size_t n)
+{  
+    char *destination;
+    const char *source;
+    int i;
+
+    destination =(char *)dest;
+    source = (const char *)src;
     
-    ptr = s;
-
-    while(n > 0)
+    i = 0;
+    while(i < n)
     {
-        *ptr = (char)c;
-        ptr++;
-        n--;
+        destination[i] = source[i];
+        i++;
     }
-    return s;
+    return dest;
 }

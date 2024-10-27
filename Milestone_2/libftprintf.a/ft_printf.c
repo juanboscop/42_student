@@ -6,7 +6,7 @@
 /*   By: jpavia <jpavia@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/10/09 12:53:50 by jpavia            #+#    #+#             */
-/*   Updated: 2024/10/09 13:27:46 by jpavia           ###   ########.fr       */
+/*   Updated: 2024/10/13 14:44:17 by jpavia           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -27,4 +27,5 @@ int my_printf(const char *data_type, ...)
 			ft_putchar_fd(data_type[i], 1);
 	}
 }
+void	check_format(char *data, char data_index)
 

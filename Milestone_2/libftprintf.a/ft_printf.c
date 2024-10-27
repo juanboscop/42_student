@@ -6,26 +6,36 @@
 /*   By: jpavia <jpavia@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/10/09 12:53:50 by jpavia            #+#    #+#             */
-/*   Updated: 2024/10/13 14:44:17 by jpavia           ###   ########.fr       */
+/*   Updated: 2024/10/27 15:45:02 by jpavia           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include <stdarg.h>
 #include "libft.h"
 
-int my_printf(const char *data_type, ...)
+int	ft_printf(const char *data_string, ...)
 {
 	int i;
-	
-	while(data_type[i] != '\0')
+
+	i = 0;	
+	while (data_string[i] != '\0')
 	{
-		if(data_type[i] == '%')
+		if (data_string[i] == '%')
 		{
-			check_format(data_type, data_type[i]);
+			// check_format(data_string, data_string[i]);
 		}
 		else    
-			ft_putchar_fd(data_type[i], 1);
+			ft_putchar_fd(data_string[i], 1);
+		i++;
 	}
+	return (0);
 }
-void	check_format(char *data, char data_index)
+static void	check_format(char *data, char data_index)
+{
+	return;
+}
 
+int	main(void)
+{
+	ft_printf("hello");
+}

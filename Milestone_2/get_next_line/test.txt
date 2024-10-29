@@ -1,0 +1,4 @@
+Hello, World!
+This is a test of the get_next_line function.
+Each line should be read and printed separately.
+This is the last line without a newline at the end.

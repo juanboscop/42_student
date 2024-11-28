@@ -3,66 +3,56 @@
 /*                                                        :::      ::::::::   */
 /*   get_next_line.c                                    :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: bosco <bosco@student.42.fr>                +#+  +:+       +#+        */
+/*   By: jpavia <jpavia@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/10/29 13:02:26 by bosco             #+#    #+#             */
-/*   Updated: 2024/10/29 19:17:43 by bosco            ###   ########.fr       */
+/*   Updated: 2024/11/19 20:23:53 by jpavia           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include <fcntl.h> 
 #include "get_next_line.h"
 
-char	*read_and_append(int fd, char *remainder);
-char	*extract_line(char *remainder);
-char	*update_remainder(char *remainder);
-
-char	*get_next_line(int fd)
+char	*join_and_free(char *remainder, char *buffer)
 {
-	static char	*txt_remainder;
-	char		*line;
-
-	line = NULL;
-	if (fd < 0 || BUFFER_SIZE <= 0)
-		return (NULL);
-	if (!txt_remainder)
-		txt_remainder = ft_strdup("");
-	if (!txt_remainder)
-		return (NULL);
-	while (!ft_strchr(txt_remainder, '\n'))
-	{
-		txt_remainder = read_and_append(fd, txt_remainder);
-		if (!txt_remainder || *txt_remainder == '\0')
-		{
-			if (txt_remainder)
-				free(txt_remainder);
-			txt_remainder = NULL;
-			return (NULL);
-		}
-	}
-	line = extract_line(txt_remainder);
-	txt_remainder = update_remainder(txt_remainder);
-	return (line);
-}
-
-char	*read_and_append(int fd, char *remainder)
-{
-	char	buffer[BUFFER_SIZE + 1];
-	ssize_t	bytes_read;
 	char	*temp;
 
-	bytes_read = read(fd, buffer, BUFFER_SIZE);
-	if (bytes_read < 0)
+	temp = ft_strjoin(remainder, buffer);
+	free(buffer);
+	if (!temp)
 	{
 		free(remainder);
 		return (NULL);
 	}
-	buffer[bytes_read] = '\0';
-	temp = ft_strjoin(remainder, buffer);
 	free(remainder);
-	if (!temp)
-		return (NULL);
 	return (temp);
+}
+
+char	*read_and_append(int fd, char *remainder)
+{
+	char	*buffer;
+	ssize_t	bytes_read;
+
+	buffer = malloc((BUFFER_SIZE + 1) * sizeof(char));
+	if (!buffer)
+	{
+		free(buffer);
+		return (NULL);
+	}
+	bytes_read = read(fd, buffer, BUFFER_SIZE);
+	if (bytes_read < 0)
+	{
+		free(buffer);
+		free(remainder);
+		return (NULL);
+	}
+	buffer[bytes_read] = '\0';
+	if (bytes_read == 0)
+	{
+		free(buffer);
+		return (remainder);
+	}
+	return (join_and_free(remainder, buffer));
 }
 
 char	*extract_line(char *remainder)
@@ -92,8 +82,58 @@ char	*update_remainder(char *remainder)
 		return (NULL);
 	}
 	new_remainder = ft_strdup(newline_pos + 1);
-	free(remainder);
 	if (!new_remainder)
+	{
+		free(remainder);
 		return (NULL);
+	}
+	free(remainder);
 	return (new_remainder);
 }
+
+char	*get_next_line(int fd)
+{
+	static char	*txt_remainder;
+	char		*line;
+	char		*old_remainder;
+
+	if (fd < 0 || BUFFER_SIZE <= 0)
+		return (NULL);
+	if (!txt_remainder)
+		txt_remainder = ft_strdup("");
+	while (!ft_strchr(txt_remainder, '\n'))
+	{
+		old_remainder = txt_remainder;
+		txt_remainder = read_and_append(fd, txt_remainder);
+		if (!txt_remainder || *txt_remainder == '\0')
+		{
+			free(txt_remainder);
+			txt_remainder = NULL;
+			return (NULL);
+		}
+		if (txt_remainder == old_remainder)
+			break ;
+	}
+	line = extract_line(txt_remainder);
+	txt_remainder = update_remainder(txt_remainder);
+	return (line);
+}
+
+// int main(void)
+// {
+// 	// const char *filename = "tt.txt"; // Nombre del archivo a leer
+// 	int fd = open("tt.txt", O_RDONLY);
+// 	if (fd == -1)
+// 	{
+// 		perror("Error opening file");
+// 		return 1;
+// 	}
+
+// 	char *line;
+// 	while ((line = get_next_line(fd)) != NULL)
+// 	{
+// 		printf("%s", line);
+// 		free(line);
+// 	}
+// 	return(0);
+// }

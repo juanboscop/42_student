@@ -6,19 +6,19 @@
 /*   By: bosco <bosco@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/22 16:06:09 by bosco             #+#    #+#             */
-/*   Updated: 2024/12/03 16:08:37 by bosco            ###   ########.fr       */
+/*   Updated: 2024/12/03 20:41:59 by bosco            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #ifndef PUSH_SWAP_H
 # define PUSH_SWAP_H
 
-#include <ctype.h>
-#include <stdio.h>
-#include <stdlib.h>
-#include <limits.h>
-#include <string.h>
-#include <unistd.h>
+# include <ctype.h>
+# include <stdio.h>
+# include <stdlib.h>
+# include <limits.h>
+# include <string.h>
+# include <unistd.h>
 
 // # define R_MSG "\n\033[1;31mERROR\033[0m"
 
@@ -29,7 +29,7 @@ typedef struct s_stack
 	int	size; // Current number of elements in the stack
 }	t_stack;
 
-extern int operation_count;
+	// extern int operation_count;
 
 int		is_number(char *str);
 int		parse_arguments(int argc, char **argv, t_stack *a);

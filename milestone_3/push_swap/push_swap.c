@@ -6,17 +6,16 @@
 /*   By: bosco <bosco@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/22 16:06:05 by bosco             #+#    #+#             */
-/*   Updated: 2024/12/03 16:56:01 by bosco            ###   ########.fr       */
+/*   Updated: 2024/12/03 20:59:38 by bosco            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "push_swap.h"
 
 // int operation_count = 0;
-
+	// operation_count++:
 void	log_operation(const char *op_name)
 {
-	// operation_count++;
 	printf("%s\n", op_name);
 }
 
@@ -57,7 +56,7 @@ int	main(int argc, char **argv)
 		return (-1);
 	if (parse_arguments(argc, argv, &stack_a) == -1)
 	{
-		// // ft_putstr_fd("Error\n", 2);
+		// ft_putstr_fd("Error\n", 2);
 		return (-1);
 	}
 	stack_b.size = 0;

@@ -6,7 +6,7 @@
 #    By: bosco <bosco@student.42.fr>                +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2024/11/22 16:06:12 by bosco             #+#    #+#              #
-#    Updated: 2024/11/24 19:25:57 by bosco            ###   ########.fr        #
+#    Updated: 2024/12/03 15:40:14 by bosco            ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -18,8 +18,9 @@ CFLAGS = -Wall -Wextra -Werror
 NAME = push_swap
 
 # Source files
-SRC = main.c input.c operation_push.c push_swap.c operation_swap.c \
-	  operation_rotate.c operation_r_rotate.c radix_sort.c
+SRC = push_swap.c input.c operation_push.c operation_swap.c \
+	  operation_rotate.c operation_r_rotate.c radix_sort.c \
+	  sort_utils.c
 OBJ = $(SRC:.c=.o)
 
 # Default rule

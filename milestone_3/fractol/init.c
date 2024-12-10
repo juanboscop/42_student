@@ -6,7 +6,7 @@
 /*   By: bosco <bosco@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/12/09 13:27:01 by bosco             #+#    #+#             */
-/*   Updated: 2024/12/09 17:46:42 by bosco            ###   ########.fr       */
+/*   Updated: 2024/12/10 13:57:08 by bosco            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -37,10 +37,15 @@ void	init_data(t_fractol *data, char **argv)
 
 void	init_mlx(t_fractol *data)
 {
+	int	*l_len;
+	int	*bpp;
+
+	bpp = &data->bpp;
+	l_len = &data->line_len;
 	data->mlx_ptr = mlx_init();
 	if (!data->mlx_ptr)
 		exit(EXIT_FAILURE);
 	data->win_ptr = mlx_new_window(data->mlx_ptr, WIDTH, HEIGHT, "fractol");
 	data->img_ptr = mlx_new_image(data->mlx_ptr, WIDTH, HEIGHT);
-	data->addr = mlx_get_data_addr(data->img_ptr, &data->bpp, &data->line_len, &data->endian);
+	data->addr = mlx_get_data_addr(data->img_ptr, bpp, l_len, &data->endian);
 }

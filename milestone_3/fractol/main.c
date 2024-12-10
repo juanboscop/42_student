@@ -6,7 +6,7 @@
 /*   By: bosco <bosco@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/12/09 12:30:28 by bosco             #+#    #+#             */
-/*   Updated: 2024/12/09 20:35:20 by bosco            ###   ########.fr       */
+/*   Updated: 2024/12/10 13:46:37 by bosco            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,9 +20,9 @@ int	main(int argc, char **argv)
 		|| (argc == 4 && !ft_strncmp(argv[1], "julia", 5)))
 	{
 		init_data(&data, argv);
-		init_mlx(&data);           // Initialize MLX, create window & image
-		draw_fractal(&data);       // Draw the initial fractal
-		set_hooks(&data);          // Set keyboard, mouse, etc. events
+		init_mlx(&data);
+		draw_fractal(&data);
+		set_hooks(&data);
 		mlx_loop(data.mlx_ptr);
 		cleanup(&data);
 	}

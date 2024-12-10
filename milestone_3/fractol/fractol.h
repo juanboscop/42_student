@@ -6,7 +6,7 @@
 /*   By: bosco <bosco@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/12/09 12:36:45 by bosco             #+#    #+#             */
-/*   Updated: 2024/12/09 20:34:09 by bosco            ###   ########.fr       */
+/*   Updated: 2024/12/10 13:18:12 by bosco            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -75,6 +75,7 @@ int		julia_iter_count(double x, double y, t_complex c, int max_iter);
 int		handle_key(int keysym, t_fractol *data);
 int		handle_mouse(int button, int x, int y, t_fractol *data);
 void	apply_zoom(t_fractol *data, double mouse_x, double mouse_y, double zoom_factor);
+void	handle_arrow_keys(int keysym, t_fractol *data);
 
 // Utilities
 void	put_pixel(t_fractol *data, int x, int y, int color);

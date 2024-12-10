@@ -6,7 +6,7 @@
 #    By: bosco <bosco@student.42.fr>                +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2024/12/09 13:34:46 by bosco             #+#    #+#              #
-#    Updated: 2024/12/09 20:37:28 by bosco            ###   ########.fr        #
+#    Updated: 2024/12/10 13:17:48 by bosco            ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -17,7 +17,7 @@
 NAME = fractol
 
 # Source files
-SRCS = main.c init.c fractal.c draw.c events.c clean_up.c
+SRCS = main.c init.c fractal.c draw.c events.c clean_up.c handle_arrow.c
 
 # Object files
 OBJS = $(SRCS:.c=.o)

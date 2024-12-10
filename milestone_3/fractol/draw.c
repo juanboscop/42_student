@@ -6,7 +6,7 @@
 /*   By: bosco <bosco@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/12/09 17:48:46 by bosco             #+#    #+#             */
-/*   Updated: 2024/12/10 13:53:50 by bosco            ###   ########.fr       */
+/*   Updated: 2024/12/10 17:49:57 by bosco            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -33,8 +33,10 @@ int	calculate_color(t_fractol *data, double cx, double cy)
 
 	if (data->fractal_type == MANDELBROT)
 		iter = mandelbrot_iter_count(cx, cy, data->max_iter);
-	else
+	else if (data->fractal_type == JULIA)
 		iter = julia_iter_count(cx, cy, data->julia_c, data->max_iter);
+	else if (data->fractal_type == BURNING_SHIP)
+		iter = burning_ship_iter_count(cx, cy, data->max_iter);
 	color_2nd = (iter * 5) % 255;
 	if (iter == data->max_iter)
 		color = create_trgb(0, 0, 0, 0);

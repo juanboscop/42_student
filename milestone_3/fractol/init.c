@@ -6,7 +6,7 @@
 /*   By: bosco <bosco@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/12/09 13:27:01 by bosco             #+#    #+#             */
-/*   Updated: 2024/12/10 13:57:08 by bosco            ###   ########.fr       */
+/*   Updated: 2024/12/10 17:54:50 by bosco            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,21 +17,27 @@ void	init_data(t_fractol *data, char **argv)
 	if (!ft_strncmp(argv[1], "mandelbrot", 10))
 	{
 		data->fractal_type = MANDELBROT;
-		data->min_x = -2.0;
 		data->max_x = 1.0;
 		data->min_y = -1.5;
 		data->max_y = 1.5;
 	}
-	else
+	else if (!ft_strncmp(argv[1], "julia", 5))
 	{
 		data->fractal_type = JULIA;
 		data->julia_c.real = ft_atof(argv[2]);
 		data->julia_c.imag = ft_atof(argv[3]);
-		data->min_x = -2.0;
 		data->max_x = 2.0;
 		data->min_y = -2.0;
 		data->max_y = 2.0;
 	}
+	else if (!ft_strncmp(argv[1], "burningship", 11))
+	{
+		data->fractal_type = BURNING_SHIP;
+		data->max_x = 2.0;
+		data->min_y = -2.0;
+		data->max_y = 2.0;
+	}
+	data->min_x = -2.0;
 	data->max_iter = 50;
 }
 

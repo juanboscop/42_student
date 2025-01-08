@@ -6,19 +6,13 @@
 /*   By: bosco <bosco@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/12/17 19:34:18 by bosco             #+#    #+#             */
-/*   Updated: 2024/12/18 13:54:16 by bosco            ###   ########.fr       */
+/*   Updated: 2025/01/08 20:23:58 by bosco            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "mini_talk.h"
+#include <time.h>
 
-int g_ack_received = 0;
-
-void	ack_handler(int signum)
-{
-	(void)signum;
-	g_ack_received = 1;
-}
 
 void	exit_function(pid_t server_pid)
 {
@@ -46,10 +40,7 @@ void	send_char(pid_t server_pid, unsigned char c)
 				exit_function(server_pid);
 		}
 		bit--;
-		// usleep(300);
-		// g_ack_received = 0;
-		// while (!g_ack_received)
-		// 	pause();
+		usleep(550);
 	}
 }
 
@@ -60,19 +51,14 @@ int	main(int argc, char **argv)
 	int		i;
 
 	if (argc != 3)
-	{
-		printf("%s = you must put the PID and a message as argument\n", R_MSG);
-		return (0);
-	}
-	pid = (pid_t)atoi(argv[1]);
+		return (printf("%s = $FILE <PID> 'message'\n", R_MSG));
+	pid = (pid_t)ft_atoi(argv[1]);
 	if (pid <= 0)
 	{
 		printf("%s = invalid PID\n", R_MSG);
 		return (0);
 	}
-	signal(SIGUSR1, ack_handler);
 	i = 0;
-	send_itoa(pid, getpid());
 	while (argv[2][i] != '\0')
 	{
 		send_char(pid, (unsigned char)argv[2][i]);

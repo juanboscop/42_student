@@ -6,7 +6,7 @@
 /*   By: bosco <bosco@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/12/17 19:05:58 by bosco             #+#    #+#             */
-/*   Updated: 2024/12/18 13:41:17 by bosco            ###   ########.fr       */
+/*   Updated: 2025/01/08 18:43:15 by bosco            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,25 +22,12 @@
 # include <stdio.h>
 # include <stdlib.h>
 # include <unistd.h>
+# include <limits.h>
 
 # define R_MSG "\033[1;31mERROR\033[0m"
 
-extern int      g_ack_received;
-
-typedef struct s_state
-{
-	pid_t           client_pid;
-	int             pid_received;
-	char            pid_buffer[20];
-	int             pid_index;
-	unsigned char   current_char;
-	int             bit_count;
-} t_state;
-
-void	send_itoa(pid_t server_pid, pid_t client_pid);
 void	handler_function(int signum);
 void	send_char(pid_t server_pid, unsigned char c);
-char	*ft_itoa(int nbr, int len);
-int		num_strlen(int num);
+int		ft_atoi(const char *str);
 
 #endif

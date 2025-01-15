@@ -6,13 +6,20 @@
 /*   By: bosco <bosco@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/12/17 19:34:18 by bosco             #+#    #+#             */
-/*   Updated: 2025/01/08 20:23:58 by bosco            ###   ########.fr       */
+/*   Updated: 2025/01/15 12:39:10 by bosco            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "mini_talk.h"
 #include <time.h>
 
+int	g_ack_received = 1;
+
+void	ack_handler(int sig)
+{
+	(void)sig;
+	g_ack_received = 1;
+}
 
 void	exit_function(pid_t server_pid)
 {
@@ -40,16 +47,35 @@ void	send_char(pid_t server_pid, unsigned char c)
 				exit_function(server_pid);
 		}
 		bit--;
-		usleep(550);
+		usleep(1000);
 	}
+	while (!g_ack_received)
+		;
+	g_ack_received = 0;
 }
 
+int	restart_function(void)
+{
+	struct sigaction	act;
+
+	memset(&act, 0, sizeof(act));
+	act.sa_handler = ack_handler;
+	act.sa_flags = SA_RESTART | SA_NODEFER;
+	sigemptyset(&act.sa_mask);
+	if (sigaction(SIGUSR1, &act, NULL) < 0)
+	{
+		write(2, "Error setting signal handler\n", 29);
+		return (1);
+	}
+	return (0);
+}
 
 int	main(int argc, char **argv)
 {
 	pid_t	pid;
 	int		i;
 
+	restart_function();
 	if (argc != 3)
 		return (printf("%s = $FILE <PID> 'message'\n", R_MSG));
 	pid = (pid_t)ft_atoi(argv[1]);

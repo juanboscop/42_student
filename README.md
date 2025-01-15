@@ -1,4 +1,4 @@
-# 42 STUDENT
+# ~~~~~~~~~~~~~~~42 STUDENT 🚀 ~~~~~~~~~~~~~
 all of 42 student subjects
 
 ## MILESTONE 2

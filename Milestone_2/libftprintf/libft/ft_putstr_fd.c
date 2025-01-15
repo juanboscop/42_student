@@ -6,17 +6,20 @@
 /*   By: bosco <bosco@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/10/28 13:08:21 by bosco             #+#    #+#             */
-/*   Updated: 2024/10/28 13:09:14 by bosco            ###   ########.fr       */
+/*   Updated: 2024/11/26 17:42:37 by bosco            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include <unistd.h>
 
-void ft_putstr_fd(char *s, int fd)
+int	ft_putstr_fd(char *s, int fd)
 {
-    int i;
+	int	i;
+	int	count;
 
-    i = 0;
-    while(s[i] != '\0')
-        write(fd, &s[i++], 1);
+	i = 0;
+	count = 0;
+	while (s[i] != '\0')
+		count += write(fd, &s[i++], 1);
+	return (count);
 }

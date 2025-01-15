@@ -6,13 +6,13 @@
 #    By: bosco <bosco@student.42.fr>                +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2024/10/27 20:10:54 by bosco             #+#    #+#              #
-#    Updated: 2024/10/28 17:03:49 by bosco            ###   ########.fr        #
+#    Updated: 2024/11/26 17:39:23 by bosco            ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
 NAME = libftprintf.a
 CC = cc
-CCFLAGS = -Wall -Wextra -Werror -I./libft
+CCFLAGS = -Wall -Wextra -I./libft
 
 SRC =	ft_printf.c \
 		ft_puthex_upper.c \

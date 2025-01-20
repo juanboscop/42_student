@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   ft_atof.c                                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: bosco <bosco@student.42.fr>                +#+  +:+       +#+        */
+/*   By: jpavia <jpavia@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/12/09 17:28:53 by bosco             #+#    #+#             */
-/*   Updated: 2024/12/09 17:39:29 by bosco            ###   ########.fr       */
+/*   Updated: 2024/12/12 20:37:58 by jpavia           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,8 +14,7 @@
 
 static int	ft_isspace(char c)
 {
-	return (c == ' ' || c == '\n' || c == '\t'
-            || c == '\v' || c == '\f' || c == '\r');
+	return (c == ' ' || c == '\n' || c == '\t' || c == '\v' || c == '\f' || c == '\r');
 }
 
 static const char	*parse_digits(const char *s, double *val)

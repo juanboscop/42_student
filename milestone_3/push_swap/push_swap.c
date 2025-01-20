@@ -3,14 +3,16 @@
 /*                                                        :::      ::::::::   */
 /*   push_swap.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: bosco <bosco@student.42.fr>                +#+  +:+       +#+        */
+/*   By: jpavia <jpavia@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/22 16:06:05 by bosco             #+#    #+#             */
-/*   Updated: 2024/12/03 20:59:38 by bosco            ###   ########.fr       */
+/*   Updated: 2024/12/05 12:34:03 by jpavia           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "push_swap.h"
+#include "ft_printf_42/ft_printf.h"
+#include "ft_printf_42/libft/libft.h"
 
 // int operation_count = 0;
 	// operation_count++:
@@ -53,10 +55,13 @@ int	main(int argc, char **argv)
 	t_stack	stack_b;
 
 	if (argc < 2)
+	{
+		ft_putstr_fd("Error\n", 2);
 		return (-1);
+	}
 	if (parse_arguments(argc, argv, &stack_a) == -1)
 	{
-		// ft_putstr_fd("Error\n", 2);
+		ft_putstr_fd("Error\n", 2);
 		return (-1);
 	}
 	stack_b.size = 0;

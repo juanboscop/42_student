@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   fractol.h                                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: bosco <bosco@student.42.fr>                +#+  +:+       +#+        */
+/*   By: jpavia <jpavia@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/12/09 12:36:45 by bosco             #+#    #+#             */
-/*   Updated: 2024/12/10 18:40:43 by bosco            ###   ########.fr       */
+/*   Updated: 2024/12/12 20:20:07 by jpavia           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,7 +22,7 @@
 # include "mlx.h"
 # include "libft/libft.h"
 
-# define ERROR_MSG "\nPlease enter a correct julia , mandelbrot or burningship sequence\n"
+# define ERROR_MSG "\nPlease enter a correct fractal sequence\n"
 # define WIDTH 800
 # define HEIGHT 800
 

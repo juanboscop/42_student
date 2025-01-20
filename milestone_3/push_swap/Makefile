@@ -6,12 +6,12 @@
 #    By: jpavia <jpavia@student.42.fr>              +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2024/11/22 16:06:12 by bosco             #+#    #+#              #
-#    Updated: 2024/12/04 12:15:35 by jpavia           ###   ########.fr        #
+#    Updated: 2024/12/05 12:56:30 by jpavia           ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
 # Compiler and flags
-CC = gcc
+CC = cc
 CFLAGS = -Wall -Wextra -Werror -I./ft_printf_42
 
 # Executable name
@@ -42,17 +42,15 @@ $(FT_PRINTF_LIB):
 %.o: %.c push_swap.h
 	$(CC) $(CFLAGS) -c $< -o $@
 
-# Clean up object files
+
 clean:
 	rm -f $(OBJ)
 	make clean -C $(FT_PRINTF_PATH)
 
-# Clean up all files
 fclean: clean
 	rm -f $(NAME)
 	make fclean -C $(FT_PRINTF_PATH)
 
-# Rebuild everything
 re: fclean all
 
 .PHONY: all clean fclean re

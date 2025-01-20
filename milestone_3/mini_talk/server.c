@@ -3,18 +3,16 @@
 /*                                                        :::      ::::::::   */
 /*   server.c                                           :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: bosco <bosco@student.42.fr>                +#+  +:+       +#+        */
+/*   By: jpavia <jpavia@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/12/18 13:31:15 by bosco             #+#    #+#             */
-/*   Updated: 2025/01/15 12:41:05 by bosco            ###   ########.fr       */
+/*   Updated: 2025/01/20 15:30:45 by jpavia           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "mini_talk.h"
-#include <signal.h>
-#include <unistd.h>
-#include <stdlib.h>
-#include <stdio.h>
+#include "ft_printf_42/ft_printf.h"
+#include "ft_printf_42/libft/libft.h"
 
 t_server_state	g_server = {0, 0};
 
@@ -55,7 +53,7 @@ int	main(void)
 
 	signal(SIGINT, handle_exit);
 	pid = getpid();
-	printf("Server PID: %d\n", pid);
+	ft_printf("Server PID: %d\n", pid);
 	sigemptyset(&sa.sa_mask);
 	sa.sa_flags = SA_SIGINFO;
 	sa.sa_sigaction = handler_function;

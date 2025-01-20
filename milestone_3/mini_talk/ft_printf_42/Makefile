@@ -6,7 +6,7 @@
 #    By: jpavia <jpavia@student.42.fr>              +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2024/10/27 20:10:54 by bosco             #+#    #+#              #
-#    Updated: 2024/10/30 21:13:21 by jpavia           ###   ########.fr        #
+#    Updated: 2025/01/20 15:44:39 by jpavia           ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -29,7 +29,9 @@ LIBFT = $(LIBFT_PATH)/libft.a
 # Add the necessary object files from libft
 LIBFT_OBJS = $(LIBFT_PATH)/ft_putchar_fd.o \
              $(LIBFT_PATH)/ft_putstr_fd.o \
-             $(LIBFT_PATH)/ft_putnbr_fd.o
+             $(LIBFT_PATH)/ft_putnbr_fd.o \
+			 $(LIBFT_PATH)/ft_atoi.o \
+			 $(LIBFT_PATH)/ft_memset.o
 
 COMPILE_LIB = ar rcs
 REMOVE = rm -f

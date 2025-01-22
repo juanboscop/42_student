@@ -6,7 +6,7 @@
 /*   By: jpavia <jpavia@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/22 16:06:05 by bosco             #+#    #+#             */
-/*   Updated: 2024/12/05 12:34:03 by jpavia           ###   ########.fr       */
+/*   Updated: 2025/01/22 14:20:00 by jpavia           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -55,10 +55,7 @@ int	main(int argc, char **argv)
 	t_stack	stack_b;
 
 	if (argc < 2)
-	{
-		ft_putstr_fd("Error\n", 2);
 		return (-1);
-	}
 	if (parse_arguments(argc, argv, &stack_a) == -1)
 	{
 		ft_putstr_fd("Error\n", 2);

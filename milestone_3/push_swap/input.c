@@ -6,7 +6,7 @@
 /*   By: jpavia <jpavia@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/22 16:24:57 by bosco             #+#    #+#             */
-/*   Updated: 2024/12/05 12:33:26 by jpavia           ###   ########.fr       */
+/*   Updated: 2025/01/22 14:18:14 by jpavia           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -37,24 +37,30 @@ int	is_number(char *str)
 	return (1);
 }
 
-int	ft_atoi(const char *str)
+int	ft_atoi(const char *str, int *error)
 {
-	unsigned int	num;
-	int				i;
-	int				np;
+	long long	num;
+	int			i;
+	int			np;
 
-	np = 1;
-	i = 0;
 	num = 0;
+	i = 0;
+	np = 1;
+	*error = 0;
 	while (str[i] == ' ' || str[i] == '\t' || str[i] == '\f'
 		|| str[i] == '\r' || str[i] == '\n' || str[i] == '\v')
 		i++;
 	if (str[i] == '+' || str[i] == '-')
-		if (str[i++] == '-')
+	{
+		if (str[i] == '-')
 			np = -1;
+		i++;
+	}
 	while (str[i] >= '0' && str[i] <= '9')
 	{
 		num = num * 10 + (str[i] - '0');
+		if ((np == 1 && num > INT_MAX) || (np == -1 && -num < INT_MIN))
+			*error = 1;
 		i++;
 	}
 	return ((int)(np * num));
@@ -65,6 +71,7 @@ int	parse_arguments(int argc, char **argv, t_stack *a)
 	int	i;
 	int	num;
 	int	j;
+	int	error;
 
 	i = 1;
 	a->size = 0;
@@ -72,8 +79,9 @@ int	parse_arguments(int argc, char **argv, t_stack *a)
 	{
 		if (!is_number(argv[i]))
 			return (-1);
-		num = ft_atoi(argv[i]);
-		if (num > INT_MAX || num < INT_MIN)
+		error = 0;
+		num = ft_atoi(argv[i++], &error);
+		if (error == 1)
 			return (-1);
 		j = 0;
 		while (j < a->size)
@@ -82,9 +90,7 @@ int	parse_arguments(int argc, char **argv, t_stack *a)
 				return (-1);
 			j++;
 		}
-		a->arr[a->size] = num;
-		a->size++;
-		i++;
+		a->arr[a->size++] = num;
 	}
 	return (0);
 }

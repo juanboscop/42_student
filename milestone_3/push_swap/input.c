@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   input.c                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: jpavia <jpavia@student.42.fr>              +#+  +:+       +#+        */
+/*   By: bosco <bosco@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/22 16:24:57 by bosco             #+#    #+#             */
-/*   Updated: 2025/01/22 14:18:14 by jpavia           ###   ########.fr       */
+/*   Updated: 2025/01/31 19:31:43 by bosco            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -37,60 +37,58 @@ int	is_number(char *str)
 	return (1);
 }
 
-int	ft_atoi(const char *str, int *error)
+static int	process_token(t_stack *a, char *token, int *error)
 {
-	long long	num;
-	int			i;
-	int			np;
+	int	num;
+	int	i;
 
-	num = 0;
 	i = 0;
-	np = 1;
-	*error = 0;
-	while (str[i] == ' ' || str[i] == '\t' || str[i] == '\f'
-		|| str[i] == '\r' || str[i] == '\n' || str[i] == '\v')
-		i++;
-	if (str[i] == '+' || str[i] == '-')
+	if (!is_number(token) || a->size >= 1000)
+		return (-1);
+	num = ft_atoi(token, error);
+	if (*error)
+		return (-1);
+	while (i < a->size)
 	{
-		if (str[i] == '-')
-			np = -1;
-		i++;
+		if (a->arr[i] == num)
+				return (-1);
+			i++;
 	}
-	while (str[i] >= '0' && str[i] <= '9')
+	a->arr[a->size++] = num;
+	return (0);
+}
+
+static int	process_arg(t_stack *a, char *arg)
+{
+	char	**tokens;
+	int		j;
+	int		error;
+
+	tokens = ft_split(arg, ' ');
+	if (!tokens)
+		return (-1);
+	j = -1;
+	error = 0;
+	while (tokens[++j])
 	{
-		num = num * 10 + (str[i] - '0');
-		if ((np == 1 && num > INT_MAX) || (np == -1 && -num < INT_MIN))
-			*error = 1;
-		i++;
+		if (process_token(a, tokens[j], &error) == -1)
+		{
+			free_tokens(tokens);
+			return (-1);
+		}
 	}
-	return ((int)(np * num));
+	free_tokens(tokens);
+	return (0);
 }
 
 int	parse_arguments(int argc, char **argv, t_stack *a)
 {
 	int	i;
-	int	num;
-	int	j;
-	int	error;
 
-	i = 1;
+	i = 0;
 	a->size = 0;
-	while (i < argc)
-	{
-		if (!is_number(argv[i]))
+	while (++i < argc)
+		if (process_arg(a, argv[i]) == -1)
 			return (-1);
-		error = 0;
-		num = ft_atoi(argv[i++], &error);
-		if (error == 1)
-			return (-1);
-		j = 0;
-		while (j < a->size)
-		{
-			if (a->arr[j] == num)
-				return (-1);
-			j++;
-		}
-		a->arr[a->size++] = num;
-	}
 	return (0);
 }

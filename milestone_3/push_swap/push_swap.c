@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   push_swap.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: jpavia <jpavia@student.42.fr>              +#+  +:+       +#+        */
+/*   By: bosco <bosco@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/22 16:06:05 by bosco             #+#    #+#             */
-/*   Updated: 2025/01/22 14:20:00 by jpavia           ###   ########.fr       */
+/*   Updated: 2025/01/31 20:04:39 by bosco            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,10 +14,11 @@
 #include "ft_printf_42/ft_printf.h"
 #include "ft_printf_42/libft/libft.h"
 
-// int operation_count = 0;
-	// operation_count++:
+int operation_count = 0;
+// operation_count++:
 void	log_operation(const char *op_name)
 {
+	operation_count++;
 	printf("%s\n", op_name);
 }
 
@@ -64,7 +65,16 @@ int	main(int argc, char **argv)
 	stack_b.size = 0;
 	if (is_sorted(&stack_a))
 		return (0);
+	printf("Initial stacks:\n");
+	print_stack("Stack A", &stack_a);
+	print_stack("Stack B", &stack_b);
+	printf("\nPerforming Radix Sort:\n");
 	radix_sort(&stack_a, &stack_b);
+	printf("\nSorted stack:\n");
+	print_stack("Stack A", &stack_a);
+	printf("Stack B: (should be empty)\n");
+	print_stack("Stack B", &stack_b);
+	printf("\nTotal operations: %d\n", operation_count);
 	return (0);
 }
 // printf("Initial stacks:\n");

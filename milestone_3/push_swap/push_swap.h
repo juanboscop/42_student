@@ -6,7 +6,7 @@
 /*   By: bosco <bosco@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/22 16:06:09 by bosco             #+#    #+#             */
-/*   Updated: 2024/12/03 20:41:59 by bosco            ###   ########.fr       */
+/*   Updated: 2025/01/31 19:32:55 by bosco            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,6 +19,8 @@
 # include <limits.h>
 # include <string.h>
 # include <unistd.h>
+# include "ft_printf_42/libft/libft.h"
+# include "ft_printf_42/ft_printf.h"
 
 // # define R_MSG "\n\033[1;31mERROR\033[0m"
 
@@ -50,5 +52,9 @@ void	map_numbers_to_indices(t_stack *stack, int *temp_arr);
 void	sort_temp_array(int *temp_arr, int size);
 void	copy_stack_to_temp(t_stack *stack, int *temp_arr);
 void	log_operation(const char *op_name);
+void	push_smallest_two(t_stack *a, t_stack *b);
+void	sort_small_stack(t_stack *a, t_stack *b, int size);
+void	free_tokens(char **tokens);
+
 
 #endif

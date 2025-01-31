@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   radix_sort.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: jpavia <jpavia@student.42.fr>              +#+  +:+       +#+        */
+/*   By: bosco <bosco@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/24 14:02:36 by bosco             #+#    #+#             */
-/*   Updated: 2024/12/05 12:41:37 by jpavia           ###   ########.fr       */
+/*   Updated: 2025/01/31 20:56:55 by bosco            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -104,10 +104,17 @@ void	radix_sort(t_stack *stack_a, t_stack *stack_b)
 
 	map_indices(stack_a);
 	total_size = stack_a->size;
-	if (total_size <= 10)
+	if (total_size <= 5)
+	{
+		sort_small_stack(stack_a, stack_b, total_size);
+		return ;
+	}
+	else if (total_size <= 10)
 		num_chunks = 1;
 	else if (total_size <= 100)
 		num_chunks = 5;
+	else if (total_size <= 250)
+		num_chunks = 8;
 	else
 		num_chunks = 11;
 	chunk_size = (total_size + num_chunks - 1) / num_chunks;

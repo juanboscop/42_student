@@ -6,7 +6,7 @@
 /*   By: bosco <bosco@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/31 13:43:41 by bosco             #+#    #+#             */
-/*   Updated: 2025/01/31 18:59:12 by bosco            ###   ########.fr       */
+/*   Updated: 2025/02/04 18:39:45 by bosco            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,9 +24,9 @@ void	sort_three(t_stack *a)
 	int	mid;
 	int	bot;
 
-    top = a->arr[0];
-    mid = a->arr[1];
-    bot = a->arr[2];
+	top = a->arr[0];
+	mid = a->arr[1];
+	bot = a->arr[2];
 	if (top > mid && mid < bot && bot > top)
 		swap_a(a);
 	else if (top > mid && mid < bot && bot < top)
@@ -64,5 +64,3 @@ void	sort_small_stack(t_stack *a, t_stack *b, int size)
 	else if (size <= 5)
 		sort_five(a, b);
 }
-
-

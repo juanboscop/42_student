@@ -6,7 +6,7 @@
 /*   By: bosco <bosco@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/22 16:24:57 by bosco             #+#    #+#             */
-/*   Updated: 2025/01/31 19:31:43 by bosco            ###   ########.fr       */
+/*   Updated: 2025/02/04 18:39:09 by bosco            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -51,8 +51,8 @@ static int	process_token(t_stack *a, char *token, int *error)
 	while (i < a->size)
 	{
 		if (a->arr[i] == num)
-				return (-1);
-			i++;
+			return (-1);
+		i++;
 	}
 	a->arr[a->size++] = num;
 	return (0);

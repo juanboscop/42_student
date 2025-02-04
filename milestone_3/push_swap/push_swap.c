@@ -6,7 +6,7 @@
 /*   By: bosco <bosco@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/22 16:06:05 by bosco             #+#    #+#             */
-/*   Updated: 2025/01/31 20:04:39 by bosco            ###   ########.fr       */
+/*   Updated: 2025/02/04 18:31:39 by bosco            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,12 +14,12 @@
 #include "ft_printf_42/ft_printf.h"
 #include "ft_printf_42/libft/libft.h"
 
-int operation_count = 0;
+// int operation_count = 0;
 // operation_count++:
+
 void	log_operation(const char *op_name)
 {
-	operation_count++;
-	printf("%s\n", op_name);
+	ft_printf("%s\n", op_name);
 }
 
 int	is_sorted(t_stack *stack)
@@ -36,19 +36,19 @@ int	is_sorted(t_stack *stack)
 	return (1);
 }
 
-void	print_stack(const char *name, t_stack *stack)
-{
-	int	i;
+// void	print_stack(const char *name, t_stack *stack)
+// {
+// 	int	i;
 
-	printf("%s: ", name);
-	i = 0;
-	while (i < stack->size)
-	{
-		printf("%d ", stack->arr[i]);
-		i++;
-	}
-	printf("\n");
-}
+// 	printf("%s: ", name);
+// 	i = 0;
+// 	while (i < stack->size)
+// 	{
+// 		printf("%d ", stack->arr[i]);
+// 		i++;
+// 	}
+// 	printf("\n");
+// }
 
 int	main(int argc, char **argv)
 {
@@ -65,16 +65,7 @@ int	main(int argc, char **argv)
 	stack_b.size = 0;
 	if (is_sorted(&stack_a))
 		return (0);
-	printf("Initial stacks:\n");
-	print_stack("Stack A", &stack_a);
-	print_stack("Stack B", &stack_b);
-	printf("\nPerforming Radix Sort:\n");
 	radix_sort(&stack_a, &stack_b);
-	printf("\nSorted stack:\n");
-	print_stack("Stack A", &stack_a);
-	printf("Stack B: (should be empty)\n");
-	print_stack("Stack B", &stack_b);
-	printf("\nTotal operations: %d\n", operation_count);
 	return (0);
 }
 // printf("Initial stacks:\n");

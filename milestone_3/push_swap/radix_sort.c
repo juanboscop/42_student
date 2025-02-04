@@ -6,7 +6,7 @@
 /*   By: bosco <bosco@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/24 14:02:36 by bosco             #+#    #+#             */
-/*   Updated: 2025/01/31 20:56:55 by bosco            ###   ########.fr       */
+/*   Updated: 2025/02/04 17:11:30 by bosco            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -118,6 +118,7 @@ void	radix_sort(t_stack *stack_a, t_stack *stack_b)
 	else
 		num_chunks = 11;
 	chunk_size = (total_size + num_chunks - 1) / num_chunks;
+	printf("\nThe chunk size = %i\n", chunk_size);
 	radix_sort_two(stack_a, stack_b, num_chunks, chunk_size);
 	sort_back_to_a(stack_a, stack_b);
 }

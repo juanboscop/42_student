@@ -6,7 +6,7 @@
 /*   By: bosco <bosco@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/22 16:06:09 by bosco             #+#    #+#             */
-/*   Updated: 2025/01/31 19:32:55 by bosco            ###   ########.fr       */
+/*   Updated: 2025/02/04 18:38:12 by bosco            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -55,6 +55,5 @@ void	log_operation(const char *op_name);
 void	push_smallest_two(t_stack *a, t_stack *b);
 void	sort_small_stack(t_stack *a, t_stack *b, int size);
 void	free_tokens(char **tokens);
-
 
 #endif

@@ -6,7 +6,7 @@
 /*   By: bosco <bosco@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/31 19:00:41 by bosco             #+#    #+#             */
-/*   Updated: 2025/01/31 19:28:29 by bosco            ###   ########.fr       */
+/*   Updated: 2025/02/04 18:37:31 by bosco            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -50,7 +50,7 @@ static void	move_smallest_to_top(t_stack *a, int index)
 	}
 }
 
-void    push_smallest_two(t_stack *a, t_stack *b)
+void	push_smallest_two(t_stack *a, t_stack *b)
 {
 	int	target_idx;
 

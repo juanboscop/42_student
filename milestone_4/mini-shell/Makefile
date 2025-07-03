@@ -15,7 +15,7 @@ NAME = minishell
 
 CC = cc
 CFLAGS = -Wall -Wextra -Werror -I./ft_printf_42 -I./ft_printf_42/libft
-SRCS = src/main.c src/parser.c
+SRCS = src/main.c src/parser.c src/tokenizer.c
 OBJS = $(SRCS:.c=.o)
 
 FT_PRINTF_DIR = ft_printf_42

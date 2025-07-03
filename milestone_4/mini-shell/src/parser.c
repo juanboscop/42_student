@@ -12,9 +12,31 @@
 
 #include "../include/minishell.h"
 
+static void    print_tokens(t_token *tok)
+{
+    while (tok)
+    {
+        if (tok->type == TOKEN_WORD)
+            ft_printf("WORD:%s\n", tok->value);
+        else if (tok->type == TOKEN_PIPE)
+            ft_printf("PIPE\n");
+        else if (tok->type == TOKEN_REDIR_IN)
+            ft_printf("REDIR_IN\n");
+        else if (tok->type == TOKEN_REDIR_OUT)
+            ft_printf("REDIR_OUT\n");
+        else if (tok->type == TOKEN_APPEND)
+            ft_printf("APPEND\n");
+        else if (tok->type == TOKEN_HEREDOC)
+            ft_printf("HEREDOC\n");
+        tok = tok->next;
+    }
+}
+
 
 void	parse_input(char *prompt)
 {
+	t_token	*tokens;
+
 	if (!prompt)
 	{
 		ft_printf("exit\n");
@@ -26,4 +48,8 @@ void	parse_input(char *prompt)
 		free(prompt);
 		exit(1);
 	}
+	tokens = tokenize_input(prompt);
+	print_tokens(tokens);
+	free_tokens(tokens);
 }
+

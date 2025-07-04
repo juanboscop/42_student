@@ -41,6 +41,19 @@ typedef struct s_token
 t_token    *tokenize_input(char *line);
 void       free_tokens(t_token *list);
 
+typedef struct s_command
+{
+    char                **argv;
+    char                *infile;
+    char                *outfile;
+    int                 append;
+    int                 argc;
+    struct s_command    *next;
+}              t_command;
+
+t_command  *parse_tokens(t_token *tokens);
+void       free_commands(t_command *cmd);
+
 
 void    parse_input(char *prompt);
 
